@@ -7,9 +7,11 @@ type AlbumHookReturnValue = {
   handleFetch: ({
     // page,
     limit,
+    title,
   }: {
     // page: number;
-    limit: number;
+    limit?: number;
+    title?: string;
   }) => Promise<void>;
 };
 
@@ -20,19 +22,30 @@ const useAlbumListingFetch = (): AlbumHookReturnValue => {
     async ({
       // page,
       limit,
+      title,
     }: {
       // page: number;
-      limit: number;
+      limit?: number;
+      title?: string;
     }) => {
       await handleFetchResource({
         fetcher: async () => {
           let { data } = await getAllAlbum();
 
-          // const startIndex = (page - 1) * limit;
-          const startIndex = 0;
-          const endIndex = startIndex + limit;
+          if (title) {
+            data = data.filter((album) => {
+              if (album.title.toLowerCase().includes(title.toLowerCase())) {
+                return true;
+              }
+            });
+          } else if (limit) {
+            const startIndex = 0;
+            const endIndex = startIndex + limit;
 
-          data = data.slice(startIndex, endIndex);
+            data = data.slice(startIndex, endIndex);
+          }
+          // const startIndex = (page - 1) * limit;
+
           return data;
         },
       });

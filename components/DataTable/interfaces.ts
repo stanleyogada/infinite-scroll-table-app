@@ -3,6 +3,7 @@ export default interface DataTableProps {
   // SPECIFICATIONs Props
   columns: Array<Column>;
   rows: Array<Row>;
+  filterInputValue?: string;
   onRowClick: (row: Row, rowIndex: number) => void;
   onSelectionChange: (selectedRows: string[] | "All") => void;
   hasError?: boolean | string | Error;
@@ -10,6 +11,8 @@ export default interface DataTableProps {
   // Props To Provision infinite scroll
   isLoading?: boolean;
   onLastRowIsVisible?: () => void; // To Trigger infinite scroll
+  onFilterInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onShouldFilterRowsChange?: (newShouldFilterRows: boolean) => void;
 }
 
 export interface TableHeadProps {

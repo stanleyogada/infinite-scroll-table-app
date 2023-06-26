@@ -6,7 +6,14 @@ import React from "react";
 import useTableInfiniteScroll from "hooks/useTableInfiniteScroll";
 
 const HomePage: NextPage = () => {
-  const { limit, handleInfiniteScroll } = useTableInfiniteScroll();
+  const {
+    limit,
+    filterInputValue,
+    shouldFilterRows,
+    handleInfiniteScroll,
+    handleFilterInputChange,
+    handleShouldFilterRowsChange,
+  } = useTableInfiniteScroll();
 
   const { albums, handleFetch } = useAlbumListingFetch();
 
@@ -14,12 +21,25 @@ const HomePage: NextPage = () => {
     handleFetch({ limit });
   }, [handleFetch, limit]);
 
+  React.useEffect(() => {
+    if (shouldFilterRows) {
+      console.log("shouldFilterRows", shouldFilterRows);
+      (async () => {
+        await handleFetch(filterInputValue ? { title: filterInputValue } : {});
+
+        handleShouldFilterRowsChange(false);
+      })();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleFetch, handleShouldFilterRowsChange, shouldFilterRows]);
+
   const albumsData = albums.data || [];
 
   return (
     <Box maxLength="700px" mx="auto" p={10}>
+      {/* @ts-ignore */}
       <Heading as="h1" mb={10}>
-        Sr. React Developer - Fulfil Recruiting Exercise
+        Infinite Scroll Table
       </Heading>
 
       <DataTable
@@ -42,6 +62,7 @@ const HomePage: NextPage = () => {
           },
         ]}
         rows={albumsData}
+        filterInputValue={filterInputValue}
         onRowClick={(row, index) => {
           console.log(row, index);
         }}
@@ -53,8 +74,10 @@ const HomePage: NextPage = () => {
         // Props To Provision infinite scroll
         isLoading={albums.loading}
         onLastRowIsVisible={() => {
-          handleInfiniteScroll();
+          !filterInputValue && handleInfiniteScroll();
         }}
+        onFilterInputChange={handleFilterInputChange}
+        onShouldFilterRowsChange={handleShouldFilterRowsChange}
       />
     </Box>
   );

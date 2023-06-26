@@ -15,15 +15,24 @@ const DataTable: React.FC<DataTableProps> = ({
   hasError,
   columns,
   rows: originalRows,
+  filterInputValue,
   onErrorRetry,
   onRowClick,
   onSelectionChange,
   onLastRowIsVisible,
+  onFilterInputChange,
+  onShouldFilterRowsChange,
 }) => {
   const [rows, setRows] = React.useState<Array<Row>>(originalRows);
   const [selectedRows, setSelectedRows] = React.useState<
     Array<{ rowId: string | number }>
   >([]);
+
+  const handleFilterRows = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onShouldFilterRowsChange?.(true);
+    }
+  };
 
   React.useEffect(() => {
     setRows(originalRows);
@@ -80,6 +89,7 @@ const DataTable: React.FC<DataTableProps> = ({
       py={5}
       shadow="0 0 2px rgba(0, 0, 0, .1)"
     >
+      {/* @ts-ignore */}
       <Flex
         mb={5}
         borderBottom={layoutStyles.border}
@@ -99,6 +109,8 @@ const DataTable: React.FC<DataTableProps> = ({
             placeholder="Search products"
             aria-label="Search products"
             roundedLeft="none"
+            onChange={onFilterInputChange}
+            onKeyUp={handleFilterRows}
           />
         </Flex>
 
