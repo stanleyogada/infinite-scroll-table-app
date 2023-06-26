@@ -25,6 +25,29 @@
     "react-intersection-observer": "^8.33.1",
     "sass": "^1.45.1"
   },
+  "keywords": [
+    "react",
+    "typescript",
+    "library",
+    "easy",
+    "create",
+    "awesome",
+    "stanleyogada",
+    "richCode",
+    "slider",
+    "fader",
+    "carousel",
+    "beautiful",
+    "api",
+    "slide",
+    "animation",
+    "infinite",
+    "scroll",
+    "table",
+    "infinite-scroll-table",
+    "fun",
+    "clone"
+  ],
   "devDependencies": {
     "@testing-library/dom": "^8.11.3",
     "@testing-library/jest-dom": "^5.16.1",
@@ -37,5 +60,7 @@
     "eslint-config-next": "12.0.7",
     "jest": "^27.4.7",
     "typescript": "4.5.4"
-  }
+  },
+  "author": "Stanley Ogada (richCode)",
+  "license": "MIT"
 }

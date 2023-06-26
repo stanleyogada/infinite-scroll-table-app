@@ -37,6 +37,30 @@ const HomePage: NextPage = () => {
 
   return (
     <Box maxLength="700px" mx="auto" p={10}>
+      <head>
+        <meta charSet="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Infinite Scroll Table</title>
+        <meta
+          name="description"
+          content={`
+          Experience the seamless implementation of infinite scrolling with our demo app. Designed to showcase the expertise in handling large datasets and enhancing user experience, this app demonstrates the flawless integration of the infinite scrolling feature in a list of fetched data. Explore the smooth and continuous flow of content, as the app dynamically loads new data as you scroll. Witness the efficiency and performance of our implementation, providing a glimpse into the possibilities of optimized browsing and navigation. Discover the power of infinite scrolling firsthand with our impressive demo app.
+          `}
+        />
+        <meta
+          name="keywords"
+          content="frontend, web, developer, engineer, next, nextjs, react, html, css, javascript, Es6, React.js, Next.js, Redux, Jest, React-Testing-Library, Cypress, Axios, React-Query, Chart.js, Material-UI, Chakra-UI, Bootstrap, TailwindCSS, Webpack, Story-book, Vite, Git, Github, BitBucket, Node.js, NPM, Express.js, MongoDB, PostgreSQL, Heroku, Vercel, Slack, Jira, Google Meets, Sentry, Trello, Travis-CI, Circle-CI, Split.IO, Backend, full-stack, remote, job, open, visa, sponsorship, lagos, nigeria, Nigerian, US, UnitedStates, feature, Agile, Test, Infinite, Scroll, Animation"
+        />
+        <meta name="author" content="Stanley Ogada" />
+        <meta name="image" property="og:image" content="/infinite-scroll.png" />
+        <meta
+          name="url"
+          property="og:url"
+          content="https://infinite-scroll-table-app.vercel.app/"
+        />
+      </head>
+
       {/* @ts-ignore */}
       <Flex mb={10} justifyContent="space-between" alignItems="center">
         <Heading as="h1">Infinite Scroll Table</Heading>
