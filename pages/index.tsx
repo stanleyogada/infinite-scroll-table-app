@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, Link } from "@chakra-ui/react";
 import DataTable from "components/DataTable/DataTable";
 import useAlbumListingFetch from "hooks/useAlbumListingFetch";
 import React from "react";
@@ -38,9 +38,33 @@ const HomePage: NextPage = () => {
   return (
     <Box maxLength="700px" mx="auto" p={10}>
       {/* @ts-ignore */}
-      <Heading as="h1" mb={10}>
-        Infinite Scroll Table
-      </Heading>
+      <Flex mb={10} justifyContent="space-between" alignItems="center">
+        <Heading as="h1">Infinite Scroll Table</Heading>
+
+        <Box mt={10} textAlign="right" fontSize="sm" color="gray.500">
+          <Box as="p" fontSize={"smaller"}>
+            &copy; {new Date().getFullYear()} Infinite Scroll Table. All rights
+            reserved.
+          </Box>
+
+          <p>
+            Built with{" "}
+            <span role="img" aria-label="love">
+              ❤️
+            </span>{" "}
+            by{" "}
+            <Link
+              color="brand.blue"
+              textDecoration="underline"
+              href="https://www.linkedin.com/in/stanley-ogada/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stanley Ogada (RichCode)
+            </Link>
+          </p>
+        </Box>
+      </Flex>
 
       <DataTable
         // SPECIFICATIONs Props
@@ -79,6 +103,36 @@ const HomePage: NextPage = () => {
         onFilterInputChange={handleFilterInputChange}
         onShouldFilterRowsChange={handleShouldFilterRowsChange}
       />
+
+      <Box
+        as="footer"
+        mt={10}
+        textAlign="center"
+        fontSize="sm"
+        color="gray.500"
+      >
+        <Box as="p" fontSize={"smaller"}>
+          &copy; {new Date().getFullYear()} Infinite Scroll Table. All rights
+          reserved.
+        </Box>
+
+        <p>
+          Built with{" "}
+          <span role="img" aria-label="love">
+            ❤️
+          </span>{" "}
+          by{" "}
+          <Link
+            color="brand.blue"
+            textDecoration="underline"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Stanley Ogada (RichCode)
+          </Link>
+        </p>
+      </Box>
     </Box>
   );
 };
