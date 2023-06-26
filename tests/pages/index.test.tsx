@@ -12,7 +12,7 @@ describe("HomePage", () => {
     setup();
     expect(
       await screen.findByRole("heading", {
-        name: /Sr. React Developer - Fulfil Recruiting Exercise/i,
+        name: /Infinite Scroll Table/i,
       })
     ).toBeInTheDocument();
   });
