@@ -106,7 +106,7 @@ const DataTable: React.FC<DataTableProps> = ({
             Filter
           </Button>
           <Input
-            placeholder="Search products"
+            placeholder="Search products by TITLE"
             aria-label="Search products"
             roundedLeft="none"
             onChange={onFilterInputChange}

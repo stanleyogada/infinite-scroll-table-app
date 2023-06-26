@@ -43,8 +43,8 @@ const useAlbumListingFetch = (): AlbumHookReturnValue => {
             const endIndex = startIndex + limit;
 
             data = data.slice(startIndex, endIndex);
+            // const startIndex = (page - 1) * limit;
           }
-          // const startIndex = (page - 1) * limit;
 
           return data;
         },

@@ -6,6 +6,7 @@ export interface Album {
   title: string;
   url: string;
   image: string;
+  price: string;
 }
 
 export const getAllAlbum = async (): Promise<{
@@ -20,7 +21,9 @@ export const getAllAlbum = async (): Promise<{
     albumId: item.albumId,
     title: item.title,
     url: item.url,
-    image: item.thumbnailUrl,
+    // random image
+    image: `https://picsum.photos/seed/${item.id}/200/300`,
+    price: `$${(Math.random() * 3900 + 99).toFixed(2)}`,
   }));
 
   return {
